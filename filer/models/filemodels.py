@@ -8,7 +8,13 @@ from filer.fields.multistorage_file import MultiStorageFileField
 from filer.models import mixins
 from filer import settings as filer_settings
 from filer.models.foldermodels import Folder
-from polymorphic import PolymorphicModel, PolymorphicManager
+#from polymorphic import PolymorphicModel, PolymorphicManager
+try:
+    from polymorphic.models import PolymorphicModel
+    from polymorphic.managers import PolymorphicManager
+except ImportError:
+    # django-polymorphic < 0.8
+    from polymorphic import PolymorphicModel, PolymorphicManager
 import hashlib
 import os
 
